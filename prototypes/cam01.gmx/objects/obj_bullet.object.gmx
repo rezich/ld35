@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>physics_apply_impulse(phy_position_x, phy_position_y, lengthdir_x(7, phy_rotation), lengthdir_y(7,phy_rotation));
+            <string>physics_apply_impulse(phy_position_x, phy_position_y, lengthdir_x(7, -phy_rotation + 90), lengthdir_y(7, -phy_rotation + 90));
 </string>
           </argument>
         </arguments>

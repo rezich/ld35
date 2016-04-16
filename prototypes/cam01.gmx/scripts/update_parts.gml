@@ -33,7 +33,7 @@ for (i = 0; i < ds_list_size(children); i++) {
 }
 
 
-if (keyboard_check_pressed(vk_enter)) && (ds_list_size(children) == 0) && (phy_active == false) {
+if (keyboard_check_pressed(vk_space)) && (ds_list_size(children) == 0) && (phy_active == false) {
     var bullet = instance_create(phy_position_x, phy_position_y, obj_bullet);
-    bullet.phy_rotation = -phy_rotation;
+    bullet.phy_rotation = phy_rotation;
 }
