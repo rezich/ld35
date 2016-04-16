@@ -122,7 +122,7 @@ attachable_update();
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x, y, string(ds_list_size(children)));
+draw_text(x, y, "A " + string(image_angle));
 </string>
           </argument>
         </arguments>

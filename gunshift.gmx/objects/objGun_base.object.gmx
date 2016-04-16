@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attachable_create();
+            <string>image_angle = irandom_range(0, 360);
+attachable_create();
 </string>
           </argument>
         </arguments>
@@ -72,7 +73,8 @@
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x, y, string(ds_list_size(children)));
+draw_text(x, y, "A " + string(image_angle));
+draw_text(x, y - 32, "Fa " + string(frozen_angle))
 </string>
           </argument>
         </arguments>
