@@ -5,9 +5,23 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprSquare</sprite>
+    <sprite>sprites\sprSprite</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\easy_ease.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\objP</object>
+    <object>objects\objE</object>
+    <object>objects\objSquare</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rmFirst</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
