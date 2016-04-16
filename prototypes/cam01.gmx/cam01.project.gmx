@@ -5,9 +5,33 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_box</sprite>
+    <sprite>sprites\spr_line</sprite>
+    <sprite>sprites\spr_circle</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\ease.gml</script>
+    <script>scripts\place_objects.gml</script>
+    <script>scripts\update_parts.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\obj_player</object>
+    <object>objects\obj_line</object>
+    <object>objects\obj_parts</object>
+    <object>objects\obj_control</object>
+    <object>objects\obj_bullet</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_start</room>
+  </rooms>
+  <constants number="2">
+    <constant name="MOVE_SPEED">35</constant>
+    <constant name="ENEMY_AMOUNT">30</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
