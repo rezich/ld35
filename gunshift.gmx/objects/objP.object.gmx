@@ -35,6 +35,8 @@ turn_speed = 4;
 attachable_create();
 draw_set_font(fonGothic);
 draw_set_color(c_red);
+
+instance_create(x, y, objCamera);
 </string>
           </argument>
         </arguments>

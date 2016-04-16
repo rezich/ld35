@@ -15,6 +15,8 @@
     <script>scripts\attachable_collide.gml</script>
     <script>scripts\attachable_create.gml</script>
     <script>scripts\attachable_update.gml</script>
+    <script>scripts\camera_update.gml</script>
+    <script>scripts\ease.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fonGothic</font>
@@ -22,6 +24,7 @@
   <objects name="objects">
     <object>objects\objP</object>
     <object>objects\objGun_base</object>
+    <object>objects\objCamera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
