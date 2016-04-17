@@ -51,12 +51,16 @@ attachable_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (parent != noone &amp;&amp; keyboard_check(vk_shift)) {
+    frozen_angle += random_range(-5, 5);
+}
+
+
 if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoot &amp;&amp; ancestor.is_shooting) {
     var bullet = instance_create(x, y, objBullet);
     bullet.speed = 5; 
-    bullet.direction = image_angle;
-
+    bullet.direction = image_angle + random_range(-bullet_spread / 2, bullet_spread / 2);
+    
 }
 </string>
           </argument>

@@ -10,3 +10,4 @@ generation = 0;
 
 can_shoot = true;
 // attack_speed;
+bullet_spread = 1;
