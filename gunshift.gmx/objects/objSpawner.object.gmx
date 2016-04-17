@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>spawn_rate = 60*1.5;
-alarm[0] = spawn_rate;
+alarm[0] = FIRST_SPAWN_TIMER;
 </string>
           </argument>
         </arguments>
