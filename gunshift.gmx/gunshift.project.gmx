@@ -50,13 +50,15 @@
     <object>objects\objE_base</object>
     <object>objects\objAudio</object>
     <object>objects\objExplosion</object>
+    <object>objects\objSpawner</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="2">
+  <constants number="3">
     <constant name="MAX_GUN_CHANNELS">3</constant>
     <constant name="MAX_MUSIC_CHANNELS">7</constant>
+    <constant name="MAX_ENEMIES">20</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

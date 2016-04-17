@@ -5,7 +5,7 @@ for (var i = 0; i < ds_list_size(children); i++) {
         attachable_detatch();
 }
 
-if (ancestor.object_index == objP) {
+if (ancestor == objP.id) {
     instance_destroy();
     //make the thing burn and stuff   
 }

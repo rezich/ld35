@@ -53,8 +53,8 @@
   <instances>
     <instance objName="objP" x="128" y="256" name="inst_7C4A7E06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGun_base" x="224" y="256" name="inst_6B78F764" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objE_base" x="640" y="512" name="inst_5F292C5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objAudio" x="160" y="96" name="inst_9B057048" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSpawner" x="256" y="96" name="inst_76C931F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
