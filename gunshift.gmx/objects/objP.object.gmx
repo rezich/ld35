@@ -72,6 +72,10 @@ if (keyboard_check(vk_left))
     image_angle += turn_speed;
 if (keyboard_check(vk_right))
     image_angle -= turn_speed;
+    
+while (image_angle &gt;= 360) image_angle -= 360;
+while (image_angle &lt; 0) image_angle += 360;
+
 
 x += lengthdir_x(thrust, image_angle);
 y += lengthdir_y(thrust, image_angle);
@@ -124,7 +128,7 @@ attachable_update();
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x, y, "A " + string(image_angle));
+//draw_text(x, y, "A " + string(image_angle));
 </string>
           </argument>
         </arguments>
