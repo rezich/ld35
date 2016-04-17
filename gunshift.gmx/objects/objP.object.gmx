@@ -3,7 +3,7 @@
   <spriteName>sprP</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -34,6 +34,8 @@ turn_speed = 4;
 
 generation = 0;
 
+make_trails = false;
+
 attachable_create();
 
 shooter_create();
@@ -46,6 +48,34 @@ instance_create(x, y, objCamera);
 // audio
 // sorry about this:
 global.current_gun_channel = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+my_trail = instance_create(x, y, objP_trail);
+my_trail.image_angle = image_angle;
+
+if (make_trails)
+    alarm[0] = TRAIL_TIMER;
 </string>
           </argument>
         </arguments>
@@ -69,16 +99,31 @@ global.current_gun_channel = 0;
           <argument>
             <kind>1</kind>
             <string>// movement
-if (keyboard_check(ord('W')))
-    thrust = min(thrust + accel, thrust_max);
+if (keyboard_check(ord('W')) &amp;&amp; thrust &lt;= THRUST_MAX)
+    thrust = min(thrust + accel, THRUST_MAX);
 else if (keyboard_check(ord('S')))
-    thrust = min(thrust - accel, thrust_max);
+    thrust = max(thrust - accel, -THRUST_MAX);
 else {
     if (thrust &gt; 0)
         thrust = max(thrust - decel, 0);
     else
         thrust = min(thrust + decel, 0);
 }
+
+
+
+if (keyboard_check_pressed(ord('E'))) {
+    thrust = THRUST_MAX*2.5;
+    my_trail = instance_create(x, y, objP_trail);
+    my_trail.image_angle = image_angle;
+    alarm[0] = TRAIL_TIMER;
+}
+    
+if ( (thrust &gt; THRUST_MAX || thrust &lt; -THRUST_MAX) ) {
+    make_trails = true;
+}
+else
+    make_trails = false;
 
 if (keyboard_check(vk_f5))
     game_restart();
@@ -109,6 +154,59 @@ y += lengthdir_y(thrust, image_angle);
 
 // attachables
 attachable_update();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objOB">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var near_tile = instance_nearest(x, y, objFloor);
+var angle = point_direction(x, y, near_tile.x, near_tile.y);
+var distance = distance_to_point(near_tile.x, near_tile.y);
+
+x += lengthdir_x(distance*1.5, angle);
+y += lengthdir_y(distance*1.5, angle);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objWall">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (thrust &gt; THRUST_MAX/4)
+    thrust = -thrust;
+
 </string>
           </argument>
         </arguments>

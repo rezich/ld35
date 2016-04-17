@@ -17,13 +17,21 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprP</sprite>
+    <sprite>sprites\sprSpawn</sprite>
     <sprite>sprites\sprGun_base</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_audio</sprite>
+    <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprFloor</sprite>
+    <sprite>sprites\sprOB</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Audio">
+      <script>scripts\set_song.gml</script>
+      <script>scripts\gun_assign_audio_channel.gml</script>
+    </scripts>
     <script>scripts\attachable_collide.gml</script>
     <script>scripts\attachable_create.gml</script>
     <script>scripts\attachable_update.gml</script>
@@ -34,10 +42,8 @@
     <script>scripts\explode.gml</script>
     <script>scripts\shake.gml</script>
     <script>scripts\attachable_detatch.gml</script>
-    <scripts name="Audio">
-      <script>scripts\choose_song.gml</script>
-      <script>scripts\gun_assign_audio_channel.gml</script>
-    </scripts>
+    <script>scripts\set_bonus_color.gml</script>
+    <script>scripts\reposition_enemy.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fonGothic</font>
@@ -51,14 +57,23 @@
     <object>objects\objAudio</object>
     <object>objects\objExplosion</object>
     <object>objects\objSpawner</object>
+    <object>objects\objP_trail</object>
+    <object>objects\objWall</object>
+    <object>objects\objE_spawn</object>
+    <object>objects\objFloor</object>
+    <object>objects\objOB</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="3">
+  <constants number="7">
     <constant name="MAX_GUN_CHANNELS">3</constant>
     <constant name="MAX_MUSIC_CHANNELS">7</constant>
-    <constant name="MAX_ENEMIES">20</constant>
+    <constant name="MAX_ENEMIES">3</constant>
+    <constant name="TRAIL_LIFE">20</constant>
+    <constant name="TRAIL_TIMER">TRAIL_LIFE/6</constant>
+    <constant name="THRUST_MAX">4</constant>
+    <constant name="SPAWN_LIFE">60*1.5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

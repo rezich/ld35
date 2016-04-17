@@ -1,8 +1,7 @@
-var choice = irandom_range(0, 3);
 var song;
+var choose_song = argument[0];
 
-
-switch (choice) {
+switch (choose_song) {
     case 0:
         song = sound1_drums;
         break;

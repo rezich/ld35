@@ -25,14 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawn_rate = 60*1.5;
-alarm[0] = spawn_rate;
+            <string>life_total = TRAIL_LIFE;
+life = life_total;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,18 +49,18 @@ alarm[0] = spawn_rate;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if ( (instance_number(objE_base) + (instance_number(objE_spawn))) &lt; MAX_ENEMIES) {
-    var enemy = instance_create(0, 0, objE_spawn);
-    reposition_enemy(enemy);
-    enemy.image_angle = point_direction(enemy.x, enemy.y, objP.x, objP.y);
-    enemy.color = choose(c_red, c_aqua, c_green, c_purple);
-    
-    
-    
-}
+            <string>var alpha = (life/life_total);
+
+draw_set_alpha(alpha);
+draw_sprite(sprP, image_index, x, y);
+
+// reset
+draw_set_alpha(1);
 
 
-alarm[0] = spawn_rate;
+life--;
+if (life &lt;= 0)
+    instance_destroy();
 </string>
           </argument>
         </arguments>

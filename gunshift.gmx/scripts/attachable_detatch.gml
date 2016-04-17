@@ -1,4 +1,7 @@
-ds_list_delete(parent.children, ds_list_find_index(parent.children, id));
+// delete the parent's connection to this gun and its children:
+var index = ds_list_find_index(parent.children, id);
+if (index != -1)
+    ds_list_delete(parent.children, index);
 
 for (var i = 0; i < ds_list_size(children); i++) {
     with (ds_list_find_value(children, i))

@@ -13,7 +13,6 @@ with (objGun_base) { //loop through each gun once:
     y <= view_yview[0] + view_hview[0]) && 
     (ds_list_size(children) == 0) // if it is shootable
     ) {
-        
         assigned_audio_channel = global.current_gun_channel; // make "if" logic in that gun step event to emit the sound
         global.current_gun_channel++;
     }
