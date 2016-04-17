@@ -27,12 +27,21 @@
             <kind>1</kind>
             <string>RADIUS_MIN = 20;
 RADIUS_MAX = 50;
-//SPEED_MIN = 
+SPEED_MIN = 0.075;
+SPEED_MAX = 0.1;
+
+base_size = 1;
 
 
-radius = 1;
+radius = 0;
 target_radius = random_range(RADIUS_MIN, RADIUS_MAX);
 image_alpha = 1;
+speed_ = random_range(SPEED_MIN, SPEED_MAX);
+fade_speed = random_range(SPEED_MIN * 2, SPEED_MIN * 4);
+generation = 0;
+spawned_more = false;
+
+image_blend = make_color_hsv(irandom_range(15, 40), random_range(0.75, 1) * 255, random_range(0.9, 1) * 255);
 </string>
           </argument>
         </arguments>
@@ -55,12 +64,29 @@ image_alpha = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>radius = ease(radius, target_radius, 0.1);
-if (radius &gt; target_radius * 3 / 4)
-    image_alpha = ease(image_alpha, 0, 0.3);
+            <string>radius = ease(radius, target_radius, speed_);
 
-if (image_alpha &lt; 0.01)
+if (radius &gt; target_radius / 4 &amp;&amp; !spawned_more) {
+    var gen = irandom_range(0, generation);
+    if (gen &lt;= 2) {
+        repeat (min(gen + 1, 2)) {
+            var len = random_range(0, random_range(target_radius, target_radius * 2));
+            var dir = random_range(0, 360);
+            var e = instance_create(x + lengthdir_x(len, dir), y + lengthdir_y(len, dir), objExplosion);
+            e.generation = generation + 1;
+        }
+    }
+    spawned_more = true;
+}
+
+
+if (radius &gt; target_radius * 3 / 4)
+    image_alpha = ease(image_alpha, 0, fade_speed);
+
+
+if (image_alpha &lt; 0.01) {
     instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -83,7 +109,7 @@ if (image_alpha &lt; 0.01)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_yellow);
+            <string>draw_set_color(image_blend);
 draw_set_alpha(image_alpha);
 draw_circle(x, y, radius, false);
 draw_set_alpha(1);

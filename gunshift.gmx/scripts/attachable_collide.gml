@@ -1,4 +1,5 @@
 if ((object_index == objP || parent != noone) && (other.parent == noone)) {
+    shake(2, 4);
     other.parent = id;
     ds_list_add(children, other.id);
     other.frozen_angle = other.image_angle - image_angle;

@@ -33,6 +33,8 @@
     <script>scripts\shooter_create.gml</script>
     <script>scripts\gun_assign_audio_channel.gml</script>
     <script>scripts\explode.gml</script>
+    <script>scripts\shake.gml</script>
+    <script>scripts\attachable_detatch.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fonGothic</font>
