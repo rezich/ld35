@@ -32,11 +32,19 @@ accel = 0.2;
 decel = 0.05;
 turn_speed = 4;
 
+generation = 0;
+
+
+
 attachable_create();
+
+
+ancestor = id; // overwrite for player only
+
 draw_set_font(fonGothic);
 draw_set_color(c_red);
 
-instance_create(x, y, objCamera);
+//instance_create(x, y, objCamera);
 </string>
           </argument>
         </arguments>
@@ -129,6 +137,7 @@ attachable_update();
             <kind>1</kind>
             <string>draw_self();
 //draw_text(x, y, "A " + string(image_angle));
+draw_text(x, y, "A " + string(ancestor));
 </string>
           </argument>
         </arguments>

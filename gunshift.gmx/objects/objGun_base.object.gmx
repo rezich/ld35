@@ -28,6 +28,7 @@
             <string>//image_angle = irandom_range(0, 360);
 image_angle = choose(0,90,180,270)
 attachable_create();
+
 </string>
           </argument>
         </arguments>
@@ -50,7 +51,7 @@ attachable_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//attachable_collide();
+            <string>attachable_collide();
 </string>
           </argument>
         </arguments>
@@ -74,7 +75,7 @@ attachable_create();
           <argument>
             <kind>1</kind>
             <string>draw_self();
-//draw_text(x, y, "A " + string(image_angle));
+draw_text(x, y, "A " + string(ancestor));
 //draw_text(x, y - 32, "Fa " + string(frozen_angle))
 </string>
           </argument>
