@@ -4,11 +4,23 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sound1_drums</sound>
+    <sound>sound\sound2_Flute</sound>
+    <sound>sound\sound3_Organ</sound>
+    <sound>sound\sound4_Strings</sound>
+    <sounds name="SFX">
+      <sound>sound\sound5_Crash and BD</sound>
+      <sound>sound\sound6_Gong</sound>
+      <sound>sound\sound7_Triangle</sound>
+      <sound>sound\sound8_WB</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprP</sprite>
     <sprite>sprites\sprGun_base</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_audio</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -30,6 +42,8 @@
     <object>objects\objGun_base</object>
     <object>objects\objCamera</object>
     <object>objects\objBullet</object>
+    <object>objects\objE_base</object>
+    <object>objects\objAudio</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
