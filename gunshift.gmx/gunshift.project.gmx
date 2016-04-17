@@ -52,7 +52,7 @@
     <room>rooms\room0</room>
   </rooms>
   <constants number="2">
-    <constant name="MAX_GUN_CHANNELS">4</constant>
+    <constant name="MAX_GUN_CHANNELS">3</constant>
     <constant name="MAX_MUSIC_CHANNELS">7</constant>
   </constants>
   <help>

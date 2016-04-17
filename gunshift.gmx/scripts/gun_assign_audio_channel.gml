@@ -1,16 +1,7 @@
-// argument0: the audio object id
 // Description: This function will loop through any endpoint guns on the screen and assign that audio channel to have it's gun type
 // This script is called every time a gun is attached to the player (or detached)
 
 global.current_gun_channel = 0; // reset all of the gun sfx channels each collision
-
-/*
-// id's of the guns that emit sounds:
-for (var i = MAX_GUN_CHANNELS; i > 0; i--) {
-    gun_id[i] = noone;
-}
-*/
-var my_id = id;
 
 with (objGun_base) { //loop through each gun once:
     if ( 
@@ -24,8 +15,6 @@ with (objGun_base) { //loop through each gun once:
     ) {
         
         assigned_audio_channel = global.current_gun_channel; // make "if" logic in that gun step event to emit the sound
-        // assign this gun's id to the array in the script:
-        //other.gun_id[other.current_gun_channel] = id;
         global.current_gun_channel++;
     }
     else assigned_audio_channel = -1;
@@ -35,9 +24,6 @@ while (global.current_gun_channel < MAX_GUN_CHANNELS) {
     //clear audio channels?
     global.current_gun_channel++;
 }
-
-// in objGun_base create event:
-// assigned_audio_channel = -1; 
 
 
     
