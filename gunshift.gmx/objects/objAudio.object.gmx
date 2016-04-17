@@ -43,7 +43,7 @@ music_volume = 1; //0 is silent, 1 is full volume
 //audio_sound_gain(current_track, music_volume, 0); //0 means instantaneous, but millaseconds can be used for fade effect
 
 //first song here:
-chosen_song = sound1_drums;
+chosen_song = bass_lopass;
 current_track = audio_play_sound(chosen_song,1,false);
 var len;
 len = audio_sound_length(chosen_song);

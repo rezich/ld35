@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>thrust = 0;
+            <string>magnet_strength = 0;
+create_vacuum = false;
+vacuum_alarm_started = false;
+
+thrust = 0;
 
 thrust_max = 4;
 accel = 0.2;
@@ -111,32 +115,28 @@ else {
 }
 
 
-
+// boost
 if (keyboard_check_pressed(ord('E'))) {
     thrust = THRUST_MAX*2.5;
     my_trail = instance_create(x, y, objP_trail);
     my_trail.image_angle = image_angle;
     alarm[0] = TRAIL_TIMER;
 }
-    
+
+// boost trails
 if ( (thrust &gt; THRUST_MAX || thrust &lt; -THRUST_MAX) ) {
     make_trails = true;
 }
 else
     make_trails = false;
 
+// debugging
 if (keyboard_check(vk_f5))
     game_restart();
     
-/*
-if (keyboard_check(vk_left))
-    image_angle += turn_speed;
-if (keyboard_check(vk_right))
-    image_angle -= turn_speed;
-*/
-      
-image_angle = (point_direction(x, y, mouse_x, mouse_y));
-    
+// rotation      
+image_angle = (point_direction(x, y, mouse_x, mouse_y))
+
 while (image_angle &gt;= 360) image_angle -= 360;
 while (image_angle &lt; 0) image_angle += 360;
 
@@ -154,6 +154,20 @@ y += lengthdir_y(thrust, image_angle);
 
 // attachables
 attachable_update();
+
+
+// magnetize
+if (keyboard_check(ord('F'))) {
+    magnet_strength = ease(magnet_strength, MAGNET_MAX, 0.1)
+    var create_x = x + choose(-1, 1)*random_range(0, magnet_strength*0.8);
+    var create_y = y + choose(-1, 1)*random_range(0, magnet_strength*0.8);
+    instance_create(create_x, create_y, objVacuum);
+}
+else {
+    magnet_strength = ease(magnet_strength, 0, 0.4)
+}
+    
+
 </string>
           </argument>
         </arguments>
@@ -252,7 +266,13 @@ y += lengthdir_y(distance*1.5, angle);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>
+draw_set_alpha(0.4);
+draw_circle_color(x, y, magnet_strength, c_gray, c_white, false)
+draw_set_alpha(1);
+
+
+draw_self();
 //draw_text(x, y, "A " + string(image_angle));
 //draw_text(x, y, "global.current_gun_channel = " + string(global.current_gun_channel));
 

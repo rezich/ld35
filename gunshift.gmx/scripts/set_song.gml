@@ -3,19 +3,19 @@ var choose_song = argument[0];
 
 switch (choose_song) {
     case 0:
-        song = sound1_drums;
+        song = bass_lopass;
         break;
     case 1:
-        song = sound2_Flute;
+        song = bass_nofilter;
         break;
     case 2:
-        song = sound3_Organ;
+        song = drums_breaks;
         break;
     case 3: 
-        song = sound4_Strings;
+        song = drums_toms;
         break;
     default:
-        song = sound1_drums;
+        song = bass_lopass;
 }
 
 return song;
