@@ -25,16 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>music_emitter = audio_emitter_create();
+            <string>
+// initialize music audio channels in array (for layering music)
+for (j = MAX_MUSIC_CHANNELS; j &gt; 0; j--) {
+    music_layer[i] = audio_emitter_create();
+}
+
+// initialize gun audio channels in an array (to cap the total amount of guns that can shoot at the same time)
+for (i = MAX_GUN_CHANNELS; i &gt; 0; i--)
+    sfx_channel[i] = audio_emitter_create();
+
+
+    
+music_emitter = audio_emitter_create();
 track_position = 0;
 music_volume = 1; //0 is silent, 1 is full volume
 //audio_sound_gain(current_track, music_volume, 0); //0 means instantaneous, but millaseconds can be used for fade effect
 
 current_track = audio_play_sound(sound1_drums,1,true);
-
-
-// sound effect channel 0:
-sfx_channel_0 = audio_emitter_create();
 </string>
           </argument>
         </arguments>
@@ -75,8 +83,8 @@ if (keyboard_check_pressed(ord('4'))) {
     audio_sound_set_track_position(current_track,track_position + 5);
 }
 
-// test sound effect
 
+// test sound effect
 if (keyboard_check_pressed(vk_space))
     audio_play_sound_on(sfx_channel_0,sound8_cymbal_and_bd,false, 1); //1 is priority, which is like depth but for sound
 

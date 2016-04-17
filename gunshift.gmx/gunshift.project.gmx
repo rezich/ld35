@@ -30,8 +30,8 @@
     <script>scripts\ease.gml</script>
     <script>scripts\camera_create.gml</script>
     <script>scripts\camera_update.gml</script>
-    <script>scripts\set_bullet.gml</script>
     <script>scripts\shooter_create.gml</script>
+    <script>scripts\audio_assign_gun.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fonGothic</font>
@@ -47,6 +47,10 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
+  <constants number="2">
+    <constant name="MAX_GUN_CHANNELS">7</constant>
+    <constant name="MAX_MUSIC_CHANNELS">7</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
