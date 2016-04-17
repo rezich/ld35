@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>RADIUS_MIN = 20;
 RADIUS_MAX = 50;
-SPEED_MIN = 
+//SPEED_MIN = 
 
 
 radius = 1;
