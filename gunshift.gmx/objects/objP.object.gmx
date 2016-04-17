@@ -34,8 +34,6 @@ turn_speed = 4;
 
 generation = 0;
 
-
-
 attachable_create();
 
 shooter_create();
@@ -83,6 +81,11 @@ if (keyboard_check(vk_right))
 while (image_angle &gt;= 360) image_angle -= 360;
 while (image_angle &lt; 0) image_angle += 360;
 
+
+// DEBUG: MAKE EXPLOSIONS
+if (mouse_check_button_pressed(mb_left)) {
+    explode(mouse_x, mouse_y);
+}
 
 // flag for shooting butto
 is_shooting = keyboard_check(vk_space);
