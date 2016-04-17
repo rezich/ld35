@@ -9,5 +9,8 @@ frozen_dir = 0;
 generation = 0;
 
 can_shoot = true;
-// attack_speed;
-bullet_spread = 1;
+
+shot_delay = 5;
+bullet_spread = 5;
+bullet_speed = 7;
+barrel_length = 24;

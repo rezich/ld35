@@ -87,7 +87,6 @@ while (image_angle &lt; 0) image_angle += 360;
 // flag for shooting butto
 is_shooting = keyboard_check(vk_space);
 
-
 x += lengthdir_x(thrust, image_angle);
 y += lengthdir_y(thrust, image_angle);
 
