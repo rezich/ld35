@@ -42,6 +42,10 @@ draw_set_font(fonGothic);
 draw_set_color(c_red);
 
 instance_create(x, y, objCamera);
+
+// audio
+// sorry about this:
+global.current_gun_channel = 0;
 </string>
           </argument>
         </arguments>
@@ -142,7 +146,8 @@ attachable_update();
             <kind>1</kind>
             <string>draw_self();
 //draw_text(x, y, "A " + string(image_angle));
-//draw_text(x, y, "A " + string(ancestor));
+draw_text(x, y, "global.current_gun_channel = " + string(global.current_gun_channel));
+
 </string>
           </argument>
         </arguments>

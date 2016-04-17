@@ -27,12 +27,12 @@
             <kind>1</kind>
             <string>
 // initialize music audio channels in array (for layering music)
-for (j = MAX_MUSIC_CHANNELS; j &gt; 0; j--) {
-    music_layer[i] = audio_emitter_create();
+for (var j = MAX_MUSIC_CHANNELS; j &gt; 0; j--) {
+    music_layer[j] = audio_emitter_create();
 }
 
 // initialize gun audio channels in an array (to cap the total amount of guns that can shoot at the same time)
-for (i = MAX_GUN_CHANNELS; i &gt; 0; i--)
+for (var i = MAX_GUN_CHANNELS; i &gt; 0; i--)
     sfx_channel[i] = audio_emitter_create();
 
 
@@ -85,8 +85,8 @@ if (keyboard_check_pressed(ord('4'))) {
 
 
 // test sound effect
-if (keyboard_check_pressed(vk_space))
-    audio_play_sound_on(sfx_channel_0,sound8_cymbal_and_bd,false, 1); //1 is priority, which is like depth but for sound
+//if (keyboard_check_pressed(vk_space))
+//    audio_play_sound_on(sfx_channel_0,sound8_cymbal_and_bd,false, 1); //1 is priority, which is like depth but for sound
 
 </string>
           </argument>

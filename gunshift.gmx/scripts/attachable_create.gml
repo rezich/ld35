@@ -14,3 +14,7 @@ shot_delay = 5;
 bullet_spread = 5;
 bullet_speed = 7;
 barrel_length = 24;
+
+
+// audio
+assigned_audio_channel = -1; // -1 is the default null value (no audio channel assigned currently)

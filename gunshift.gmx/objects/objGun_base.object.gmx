@@ -87,6 +87,13 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
         can_shoot = false;
         alarm[0] = shot_delay;
     }
+    
+    // audio emitted when a bullet is shot: 
+    if (assigned_audio_channel &gt;= 0 &amp;&amp; assigned_audio_channel &lt; MAX_GUN_CHANNELS) {
+        var emitter = objAudio.music_layer[assigned_audio_channel]; // id of channel to create sound to
+        audio_play_sound_on(emitter,sound8_cymbal_and_bd,false, 1);
+    }
+    
 }
 </string>
           </argument>
@@ -135,7 +142,7 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
             <kind>1</kind>
             <string>draw_self();
 //draw_text(x, y, "A " + string(ancestor));
-//draw_text(x, y - 32, "Fa " + string(frozen_angle))
+draw_text(x, y - 32, "Channel: " + string(assigned_audio_channel))
 </string>
           </argument>
         </arguments>
