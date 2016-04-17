@@ -69,18 +69,28 @@ global.current_gun_channel = 0;
           <argument>
             <kind>1</kind>
             <string>// movement
-if (keyboard_check(vk_up))
+if (keyboard_check(ord('W')))
     thrust = min(thrust + accel, thrust_max);
-else
-    thrust = max(thrust - decel, 0);
+else if (keyboard_check(ord('S')))
+    thrust = min(thrust - accel, thrust_max);
+else {
+    if (thrust &gt; 0)
+        thrust = max(thrust - decel, 0);
+    else
+        thrust = min(thrust + decel, 0);
+}
 
 if (keyboard_check(vk_f5))
     game_restart();
     
+/*
 if (keyboard_check(vk_left))
     image_angle += turn_speed;
 if (keyboard_check(vk_right))
     image_angle -= turn_speed;
+*/
+      
+image_angle = (point_direction(x, y, mouse_x, mouse_y));
     
 while (image_angle &gt;= 360) image_angle -= 360;
 while (image_angle &lt; 0) image_angle += 360;
