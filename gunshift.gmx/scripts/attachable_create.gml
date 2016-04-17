@@ -7,3 +7,6 @@ frozen_len = 0;
 frozen_dir = 0;
 
 generation = 0;
+
+can_shoot = true;
+// attack_speed;

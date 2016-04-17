@@ -20,6 +20,7 @@
     <script>scripts\camera_create.gml</script>
     <script>scripts\camera_update.gml</script>
     <script>scripts\set_bullet.gml</script>
+    <script>scripts\shooter_create.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fonGothic</font>
@@ -28,7 +29,7 @@
     <object>objects\objP</object>
     <object>objects\objGun_base</object>
     <object>objects\objCamera</object>
-    <object>objects\object3</object>
+    <object>objects\objBullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
