@@ -124,34 +124,6 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-// Please remember to move BOTH of these functions when you are ready to move: 
-gun_assign_audio_channel();
-attachable_detatch();
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -171,7 +143,7 @@ attachable_detatch();
             <kind>1</kind>
             <string>draw_self();
 //draw_text(x, y, "A " + string(ancestor));
-draw_text(x, y - 32, "Channel: " + string(assigned_audio_channel))
+//draw_text(x, y - 32, "Channel: " + string(assigned_audio_channel))
 </string>
           </argument>
         </arguments>

@@ -10,7 +10,7 @@ generation = 0;
 
 can_shoot = true;
 
-shot_delay = 5;
+shot_delay = 15;
 bullet_spread = 5;
 bullet_speed = 7;
 barrel_length = 24;

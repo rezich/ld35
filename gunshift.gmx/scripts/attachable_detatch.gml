@@ -4,4 +4,15 @@ for (var i = 0; i < ds_list_size(children); i++) {
     with (ds_list_find_value(children, i))
         attachable_detatch();
 }
-instance_destroy();
+
+if (ancestor.object_index == objP) {
+    instance_destroy();
+    //make the thing burn and stuff   
+}
+
+else {
+    ancestor = noone;
+    parent = noone;
+    generation = 0;
+    ds_list_clear(children);
+}

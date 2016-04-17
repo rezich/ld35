@@ -31,6 +31,37 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="objE_base">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (var i = 0; i &lt; ds_list_size(other.children); i++) {
+    with (ds_list_find_value(other.children, i))
+        attachable_detatch();
+}
+
+with (other)
+    instance_destroy();
+    
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="objGun_base">
       <action>
         <libid>1</libid>
@@ -53,9 +84,12 @@
 
 if (other.ancestor != owner) {
     with (other) {
+        gun_assign_audio_channel();
         attachable_detatch();
     }
 }
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
