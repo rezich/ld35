@@ -83,6 +83,7 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
     var bullet = instance_create(x + lengthdir_x(barrel_length, image_angle), y + lengthdir_y(barrel_length, image_angle), objBullet);
     bullet.speed = point_distance(ancestor.x, ancestor.y, ancestor.xprevious, ancestor.yprevious) + bullet_speed;
     bullet.direction = image_angle + random_range(-bullet_spread / 2, bullet_spread / 2);
+    bullet.owner = ancestor;
     if (shot_delay != 0) {
         can_shoot = false;
         alarm[0] = shot_delay;
