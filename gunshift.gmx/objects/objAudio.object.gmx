@@ -42,7 +42,43 @@ track_position = 0;
 music_volume = 1; //0 is silent, 1 is full volume
 //audio_sound_gain(current_track, music_volume, 0); //0 means instantaneous, but millaseconds can be used for fade effect
 
-current_track = audio_play_sound(sound1_drums,1,true);
+//first song here:
+chosen_song = sound1_drums;
+current_track = audio_play_sound(chosen_song,1,false);
+var len;
+len = audio_sound_length(chosen_song);
+audio_play_sound(chosen_song, 1, false);
+alarm[0] = room_speed * len;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>chosen_song = choose_song();
+
+current_track = audio_play_sound(chosen_song,1,false);
+
+var len;
+len = audio_sound_length(chosen_song);
+audio_play_sound(chosen_song, 1, false);
+alarm[0] = room_speed * len;
 </string>
           </argument>
         </arguments>

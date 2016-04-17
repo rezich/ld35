@@ -140,7 +140,12 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attachable_detatch();
+            <string>
+// Please remember to move BOTH of these functions when you are ready to move: 
+gun_assign_audio_channel();
+attachable_detatch();
+
+
 </string>
           </argument>
         </arguments>
