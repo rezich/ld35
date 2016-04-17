@@ -79,7 +79,7 @@
     <constant name="THRUST_MAX">4</constant>
     <constant name="SPAWN_LIFE">60*1.5</constant>
     <constant name="FIRST_SPAWN_TIMER">60*3</constant>
-    <constant name="MAGNET_MAX">64</constant>
+    <constant name="MAGNET_MAX">96</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

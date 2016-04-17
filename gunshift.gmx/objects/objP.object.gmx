@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>magnet_strength = 0;
-create_vacuum = false;
-vacuum_alarm_started = false;
+alarm[1] = 8;
+
 
 thrust = 0;
 
@@ -52,6 +52,44 @@ instance_create(x, y, objCamera);
 // audio
 // sorry about this:
 global.current_gun_channel = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var guns_max = instance_number(objGun_base);
+
+if (guns_max &gt; 0) {
+    for (var i = 0; i &lt; guns_max; i++) { // cycle through all guns
+        var current_id = instance_find(objGun_base, i);
+        if (collision_circle(x, y, magnet_strength, current_id, true, false) != noone) {
+            current_id.image_angle = point_direction(current_id.x, current_id.y, x, y) + 180;
+            with (current_id) {
+                move_towards_point(objP.x, objP.y, 6);
+            }
+        }
+    }
+}
+
+
+alarm[1] = 8;
 </string>
           </argument>
         </arguments>
@@ -167,6 +205,10 @@ else {
     magnet_strength = ease(magnet_strength, 0, 0.4)
 }
     
+
+
+
+
 
 </string>
           </argument>
