@@ -24,6 +24,8 @@
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_audio</sprite>
     <sprite>sprites\sprWall</sprite>
+    <sprite>sprites\sprWall_dk</sprite>
+    <sprite>sprites\sprCircle</sprite>
     <sprite>sprites\sprFloor</sprite>
     <sprite>sprites\sprOB</sprite>
     <sprite>sprites\sprFuzz</sprite>
@@ -62,6 +64,8 @@
     <object>objects\objSpawner</object>
     <object>objects\objP_trail</object>
     <object>objects\objWall</object>
+    <object>objects\objWall_rotate</object>
+    <object>objects\objWall_circle</object>
     <object>objects\objE_spawn</object>
     <object>objects\objFloor</object>
     <object>objects\objOB</object>

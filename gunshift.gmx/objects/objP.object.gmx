@@ -263,6 +263,8 @@ y += lengthdir_y(distance*1.5, angle);
             <string>if (thrust &gt; THRUST_MAX/4)
     thrust = -thrust;
 
+
+
 </string>
           </argument>
         </arguments>
