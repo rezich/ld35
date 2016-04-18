@@ -193,6 +193,7 @@
     <instance objName="objGun_base" x="1184" y="832" name="inst_C64FB60C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGun_base" x="1184" y="1024" name="inst_A10B8FAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGun_base" x="1248" y="1152" name="inst_27002437" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objSpawner" x="288" y="-32" name="inst_A8821518" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -14,8 +14,18 @@ switch (choose_song) {
     case 3: 
         song = drums_toms;
         break;
+    case 4: 
+        song = drums_basic;
+        break;
+    case 5: 
+        song = drums_basic2;
+        break;
+    case 6:
+        song = -1;
+        break;
+        
     default:
-        song = bass_lopass;
+        song = -1; // no song
 }
 
 return song;
