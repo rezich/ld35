@@ -40,6 +40,8 @@ timing = (room_speed*song_length)/8;
 alarm[0] = timing;
 
 target_angle = image_angle;
+target_x = x;
+target_y = y;
 </string>
           </argument>
         </arguments>
@@ -64,6 +66,15 @@ target_angle = image_angle;
             <kind>1</kind>
             <string>
 target_angle = point_direction(x,y, objP.x, objP.y);
+
+var distance = 128;
+var random_distance = choose(-1,1)*choose(0, distance, distance/2);
+
+var towards = point_direction(x, y, objP.x, objP.y);
+var side = towards + choose(90, -90); 
+
+target_x = x + lengthdir_x(random_distance, choose(towards, -towards, side));
+target_y = y + lengthdir_y(random_distance, choose(towards, -towards, side));
 
 
 alarm[0] = timing;
@@ -95,7 +106,8 @@ alarm[0] = timing;
 attachable_update();
 
 image_angle = ease(image_angle, target_angle, 0.1);
-
+x = ease(x, target_x, 0.1);
+y = ease(y, target_y, 0.1);
 </string>
           </argument>
         </arguments>

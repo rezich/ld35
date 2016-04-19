@@ -83,7 +83,7 @@
     <constant name="MAX_ENEMIES">10</constant>
     <constant name="TRAIL_LIFE">20</constant>
     <constant name="TRAIL_TIMER">TRAIL_LIFE/6</constant>
-    <constant name="THRUST_MAX">4</constant>
+    <constant name="THRUST_MAX">6</constant>
     <constant name="SPAWN_LIFE">60*1.5</constant>
     <constant name="FIRST_SPAWN_TIMER">60*3</constant>
     <constant name="MAGNET_MAX">96</constant>
