@@ -10,10 +10,13 @@ generation = 0;
 
 can_shoot = true;
 
-shot_delay = 15;
+var song_length = audio_sound_length(bass_lopass);
+var timing = (room_speed*song_length)/16;
+
+shot_delay = choose(timing, timing*2);
 bullet_spread = 5;
 bullet_speed = 7;
-barrel_length = 24;
+barrel_length = 48;
 
 
 // audio

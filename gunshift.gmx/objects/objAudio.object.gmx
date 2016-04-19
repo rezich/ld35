@@ -35,7 +35,6 @@ for (var j = 0; j &lt; MAX_MUSIC_CHANNELS; j++) {
 for (var i = MAX_GUN_CHANNELS; i &gt; 0; i--)
     sfx_channel[i] = audio_emitter_create();
 
-
     
 music_emitter = audio_emitter_create();
 track_position = 0;
@@ -275,10 +274,16 @@ if (super_roll == 1) {
 
 // used by rotating walls in level
 objWall_rotate.turn_amount = choose(-1, 1)*choose(22.5, 45); //in degrees
-objWall_rotate.turn_speed = choose(flash_speed*2, flash_speed);
+objWall_rotate.turn_speed = choose(length/8, length/16);
 
 objWall_circle.scale_amount = choose(8, 10, 12);
-objWall_circle.alarm_speed = choose(flash_speed*2, flash_speed*4);
+objWall_circle.alarm_speed = choose(length/2, length/4);
+
+// used by bullets
+objBullet.timing = choose(length/16, length/32);
+
+// enemies
+objE_base.timing = choose(length/8, length/16);
 </string>
           </argument>
         </arguments>
@@ -301,23 +306,7 @@ objWall_circle.alarm_speed = choose(flash_speed*2, flash_speed*4);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if (keyboard_check_pressed(ord('1'))) {
-    audio_resume_all();
-}
-
-if (keyboard_check_pressed(ord('2'))) {
-    audio_pause_all();
-}
-
-if (keyboard_check_pressed(ord('3'))) {
-    audio_sound_set_track_position(current_track,track_position - 5);
-}
-
-if (keyboard_check_pressed(ord('4'))) {
-    audio_sound_set_track_position(current_track,track_position + 5);
-}
-*/
+            <string>audio_listener_position(objP.x, objP.y, 0);
 </string>
           </argument>
         </arguments>

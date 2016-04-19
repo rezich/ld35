@@ -26,6 +26,106 @@
           <argument>
             <kind>1</kind>
             <string>owner = noone;
+ancestor = noone;
+
+//updated by the gun after creation
+bullet_speed = 0;
+bullet_direction = 0;
+
+target_x = x;
+target_y = y;
+
+song_length = audio_sound_length(bass_lopass);
+timing = (room_speed*song_length)/32;
+
+alarm[0] = timing;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+//target_x += lengthdir_x(bullet_speed*timing, bullet_direction);
+//target_y += lengthdir_y(bullet_speed*timing, bullet_direction);
+
+
+target_x += lengthdir_x(64, bullet_direction);
+target_y += lengthdir_y(64, bullet_direction);
+
+
+alarm[0] = timing;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+x = ease(x, target_x, 0.1);
+y = ease(y, target_y, 0.1);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objWall">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+var rand = choose(1,2,3);
+for (var i = 0; i &lt; rand; i++) 
+    instance_create(x + choose(-1,1)*choose(0,4,6), y + choose(-1,1)*choose(1,2,3), objPuff);
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -91,10 +191,11 @@ if (other.ancestor != owner) {
     with (other) {
         gun_assign_audio_channel();
         attachable_detatch();
+        instance_destroy();
     }
 }
 
-instance_destroy();
+
 </string>
           </argument>
         </arguments>
@@ -118,6 +219,34 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (owner == objP.id)
+    draw_sprite(spr_bulletB, image_index, x,y);
+else if (owner.object_index = objE_base)
+    draw_sprite(spr_bullet, image_index, x, y);
+else
+    draw_sprite(sprPuff, image_index, x, y);
 </string>
           </argument>
         </arguments>

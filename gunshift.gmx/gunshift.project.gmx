@@ -22,6 +22,7 @@
     <sprite>sprites\sprSpawn</sprite>
     <sprite>sprites\sprGun_base</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_bulletB</sprite>
     <sprite>sprites\spr_audio</sprite>
     <sprite>sprites\sprWall</sprite>
     <sprite>sprites\sprWall_dk</sprite>
@@ -29,6 +30,7 @@
     <sprite>sprites\sprFloor</sprite>
     <sprite>sprites\sprOB</sprite>
     <sprite>sprites\sprFuzz</sprite>
+    <sprite>sprites\sprPuff</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -70,6 +72,7 @@
     <object>objects\objFloor</object>
     <object>objects\objOB</object>
     <object>objects\objVacuum</object>
+    <object>objects\objPuff</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
