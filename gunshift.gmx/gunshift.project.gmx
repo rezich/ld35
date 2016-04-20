@@ -9,6 +9,15 @@
       <sound>sound\sound8_cymbal_and_bd</sound>
       <sound>sound\sound9_gong</sound>
       <sound>sound\sound10_wb</sound>
+      <sound>sound\SFX_connectGun</sound>
+      <sound>sound\SFX_explosion0</sound>
+      <sound>sound\SFX_explosion1</sound>
+      <sound>sound\SFX_explosion2</sound>
+      <sound>sound\SFX_vucuum</sound>
+      <sound>sound\SFX_waveComplete</sound>
+      <sound>sound\SFX_shoot1</sound>
+      <sound>sound\SFX_shoot0</sound>
+      <sound>sound\SFX_magnet0</sound>
     </sounds>
     <sound>sound\bass_lopass</sound>
     <sound>sound\bass_nofilter</sound>
@@ -77,7 +86,7 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="9">
+  <constants number="19">
     <constant name="MAX_GUN_CHANNELS">3</constant>
     <constant name="MAX_MUSIC_CHANNELS">4</constant>
     <constant name="MAX_ENEMIES">10</constant>
@@ -87,6 +96,16 @@
     <constant name="SPAWN_LIFE">60*1.5</constant>
     <constant name="FIRST_SPAWN_TIMER">60*3</constant>
     <constant name="MAGNET_MAX">96</constant>
+    <constant name="RIGHT">1</constant>
+    <constant name="DOWN">2</constant>
+    <constant name="LEFT">3</constant>
+    <constant name="UP">4</constant>
+    <constant name="NODIRECTION">5</constant>
+    <constant name="DOWNL">6</constant>
+    <constant name="DOWNR">7</constant>
+    <constant name="UPL">8</constant>
+    <constant name="UPR">9</constant>
+    <constant name="MOVE_SPEED">128</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

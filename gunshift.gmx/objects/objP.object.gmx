@@ -25,9 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>magnet_strength = 0;
+            <string>// new movement code:
+move_direction = NODIRECTION; 
+target_x = x;
+target_y = y;
+var song_length = audio_sound_length(bass_lopass);
+timing = (room_speed*song_length)/32;
+alarm[2] = timing/16;
+
+magnet_strength = 0;
 alarm[1] = 8;
 
+// trails
+alarm[0] = TRAIL_TIMER;
 
 thrust = 0;
 
@@ -52,6 +62,138 @@ instance_create(x, y, objCamera);
 // audio
 // sorry about this:
 global.current_gun_channel = 0;
+// magnet sound check
+alarm[3] = 20;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (magnet_strength &gt; MAGNET_MAX/3) {
+    audio_play_sound(SFX_magnet0, 4, false);
+}
+
+alarm[3] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move to the music:
+
+
+// 8 possible directions:
+
+
+if (keyboard_check(ord('W'))) { 
+    if (keyboard_check(ord('A')))
+        move_direction = UPL;
+    else if (keyboard_check(ord('D')))
+        move_direction = UPR;
+    else 
+        move_direction = UP;
+}
+else if (keyboard_check(ord('S'))) {
+    if (keyboard_check(ord('A')))
+        move_direction = DOWNL;
+    else if (keyboard_check(ord('D')))
+        move_direction = DOWNR;
+    else 
+        move_direction = DOWN;
+}
+else if (keyboard_check(ord('A'))) {
+    move_direction = LEFT;
+}
+else if (keyboard_check(ord('D'))) {
+    move_direction = RIGHT;
+}
+
+
+switch (move_direction) {
+
+    case RIGHT:
+        target_x = x + MOVE_SPEED;
+        target_y = y;
+        break;
+
+    case DOWNR:
+        target_x = x + MOVE_SPEED*(2/3);
+        target_y = y + MOVE_SPEED*(2/3);
+        break;
+
+    case DOWN:
+        target_x = x;
+        target_y = y + MOVE_SPEED;
+        break;
+
+    case DOWNL:
+        target_x = x - MOVE_SPEED*(2/3);
+        target_y = y + MOVE_SPEED*(2/3);
+        break;
+
+    case LEFT:
+        target_x = x - MOVE_SPEED;
+        target_y = y;
+        break;
+
+    case UPL:
+        target_x = x - MOVE_SPEED*(2/3);
+        target_y = y - MOVE_SPEED*(2/3);
+        break;
+
+    case UP:
+        target_x = x;
+        target_y = y - MOVE_SPEED;
+        break;
+
+    case UPR:
+        target_x = x + MOVE_SPEED*(2/3);
+        target_y = y - MOVE_SPEED*(2/3);
+        break;
+        
+    default: 
+        target_x = x;
+        target_y = y;
+}
+
+
+
+alarm[2] = timing;
 </string>
           </argument>
         </arguments>
@@ -113,11 +255,14 @@ alarm[1] = 8;
           <argument>
             <kind>1</kind>
             <string>
-my_trail = instance_create(x, y, objP_trail);
-my_trail.image_angle = image_angle;
+if (make_trails) {
+    my_trail = instance_create(x, y, objP_trail);
+    my_trail.image_angle = image_angle;
+}
 
-if (make_trails)
-    alarm[0] = TRAIL_TIMER;
+alarm[0] = TRAIL_TIMER;
+    
+
 </string>
           </argument>
         </arguments>
@@ -141,6 +286,7 @@ if (make_trails)
           <argument>
             <kind>1</kind>
             <string>// movement
+/*
 if (keyboard_check(ord('W')) &amp;&amp; thrust &lt;= THRUST_MAX)
     thrust = min(thrust + accel, THRUST_MAX);
 else if (keyboard_check(ord('S')))
@@ -151,8 +297,10 @@ else {
     else
         thrust = min(thrust + decel, 0);
 }
+*/
 
 
+/*
 // boost
 if (keyboard_check_pressed(ord('E'))) {
     thrust = THRUST_MAX*2.5;
@@ -160,14 +308,56 @@ if (keyboard_check_pressed(ord('E'))) {
     my_trail.image_angle = image_angle;
     alarm[0] = TRAIL_TIMER;
 }
+*/
 
+
+// 8 possible directions:
+if (keyboard_check(ord('W'))) { 
+    if (keyboard_check(ord('A')))
+        move_direction = UPL;
+    else if (keyboard_check(ord('D')))
+        move_direction = UPR;
+    else 
+        move_direction = UP;
+}
+else if (keyboard_check(ord('S'))) {
+    if (keyboard_check(ord('A')))
+        move_direction = DOWNL;
+    else if (keyboard_check(ord('D')))
+        move_direction = DOWNR;
+    else 
+        move_direction = DOWN;
+}
+else if (keyboard_check(ord('A'))) {
+    move_direction = LEFT;
+}
+else if (keyboard_check(ord('D'))) {
+    move_direction = RIGHT;
+}
+
+
+    
+// Update Movement here:
+x = ease(x, target_x, 0.1);
+y = ease(y, target_y, 0.1);
+
+/*
 // boost trails
 if ( (thrust &gt; THRUST_MAX || thrust &lt; -THRUST_MAX) ) {
     make_trails = true;
 }
 else
     make_trails = false;
+*/
+if (distance_to_point(target_x, target_y) &gt;= 32)  {
+    make_trails = true;
+}
+else
+    make_trails = false;
 
+    
+    
+    
 // debugging
 if (keyboard_check(vk_f5))
     game_restart();
@@ -180,12 +370,12 @@ while (image_angle &lt; 0) image_angle += 360;
 
 
 // DEBUG: MAKE EXPLOSIONS
-if (mouse_check_button_pressed(mb_left)) {
-    explode(mouse_x, mouse_y);
-}
+//if (mouse_check_button_pressed(mb_left)) {
+//    explode(mouse_x, mouse_y);
+//}
 
 // flag for shooting butto
-is_shooting = keyboard_check(vk_space);
+//is_shooting = mouse_check_button(mb_left);
 
 x += lengthdir_x(thrust, image_angle);
 y += lengthdir_y(thrust, image_angle);
@@ -195,7 +385,7 @@ attachable_update();
 
 
 // magnetize
-if (keyboard_check(ord('F'))) {
+if (mouse_check_button(mb_left)) {
     magnet_strength = ease(magnet_strength, MAGNET_MAX, 0.1)
     var create_x = x + choose(-1, 1)*random_range(0, magnet_strength*0.8);
     var create_y = y + choose(-1, 1)*random_range(0, magnet_strength*0.8);
@@ -205,8 +395,6 @@ else {
     magnet_strength = ease(magnet_strength, 0, 0.4)
 }
     
-
-
 
 
 
@@ -317,7 +505,7 @@ draw_set_alpha(1);
 
 
 draw_self();
-//draw_text(x, y, "A " + string(image_angle));
+//draw_text(x, y, "move_direction = " + string(move_direction));
 //draw_text(x, y, "global.current_gun_channel = " + string(global.current_gun_channel));
 
 </string>

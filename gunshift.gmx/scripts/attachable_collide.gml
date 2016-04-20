@@ -1,5 +1,5 @@
 if ((object_index == objP || parent != noone) && (other.parent == noone)) {
-    shake(2, 4);
+    shake(3, 6);
     other.parent = id;
     ds_list_add(children, other.id);
     other.frozen_angle = other.image_angle - image_angle;
@@ -11,4 +11,11 @@ if ((object_index == objP || parent != noone) && (other.parent == noone)) {
     // audio:
     // reset all of the gun audio channels each time a gun is attached (and detached)
     gun_assign_audio_channel();
+    
+    if ( (object_index == objP) || (object_index == objGun_base) && (!other.played_sfx)) {
+        other.played_sfx = true;
+        audio_play_sound(SFX_connectGun, 3, false);
+    }
 }
+
+

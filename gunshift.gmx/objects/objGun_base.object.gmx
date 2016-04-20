@@ -28,13 +28,14 @@
             <string>//image_angle = irandom_range(0, 360);
 image_angle = random(360);
 attachable_create();
-
+alarm[1] = timing;
+played_sfx = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,13 +52,37 @@ attachable_create();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>can_shoot = true;
+            <string>
+// fire every alarm if possible:
+
+if (ancestor != noone &amp;&amp; ds_list_size(children) == 0) { //&amp;&amp; can_shoot &amp;&amp; ancestor.is_shooting) {
+    var bullet = instance_create(x + lengthdir_x(barrel_length, image_angle), y + lengthdir_y(barrel_length, image_angle), objBullet);
+    bullet.bullet_speed = point_distance(ancestor.x, ancestor.y, ancestor.xprevious, ancestor.yprevious) + bullet_speed;
+    bullet.bullet_direction = image_angle + random_range(-bullet_spread / 2, bullet_spread / 2);
+    bullet.owner = ancestor;
+    bullet.owner_index = ancestor.object_index;
+    if (shot_delay != 0) {
+        can_shoot = false;
+        alarm[0] = shot_delay;
+    }
+    
+    // audio emitted when a bullet is shot: 
+    if (assigned_audio_channel &gt;= 0 &amp;&amp; assigned_audio_channel &lt; MAX_GUN_CHANNELS) {
+        var emitter = objAudio.sfx_channel[assigned_audio_channel]; // id of channel to create sound to
+        audio_play_sound_on(emitter,SFX_shoot0,false, 1);
+    }
+    
+}
+
+
+alarm[1] = shot_delay;
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,23 +104,6 @@ attachable_create();
 }
 
 
-if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoot &amp;&amp; ancestor.is_shooting) {
-    var bullet = instance_create(x + lengthdir_x(barrel_length, image_angle), y + lengthdir_y(barrel_length, image_angle), objBullet);
-    bullet.bullet_speed = point_distance(ancestor.x, ancestor.y, ancestor.xprevious, ancestor.yprevious) + bullet_speed;
-    bullet.bullet_direction = image_angle + random_range(-bullet_spread / 2, bullet_spread / 2);
-    bullet.owner = ancestor;
-    if (shot_delay != 0) {
-        can_shoot = false;
-        alarm[0] = shot_delay;
-    }
-    
-    // audio emitted when a bullet is shot: 
-    if (assigned_audio_channel &gt;= 0 &amp;&amp; assigned_audio_channel &lt; MAX_GUN_CHANNELS) {
-        var emitter = objAudio.music_layer[assigned_audio_channel]; // id of channel to create sound to
-        audio_play_sound_on(emitter,sound8_cymbal_and_bd,false, 1);
-    }
-    
-}
 </string>
           </argument>
         </arguments>
@@ -119,6 +127,8 @@ if (ancestor != noone &amp;&amp; ds_list_size(children) == 0 &amp;&amp; can_shoo
           <argument>
             <kind>1</kind>
             <string>attachable_collide();
+
+
 </string>
           </argument>
         </arguments>

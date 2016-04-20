@@ -66,8 +66,8 @@ alarm[0] = timing;
 //target_y += lengthdir_y(bullet_speed*timing, bullet_direction);
 
 
-target_x += lengthdir_x(64, bullet_direction);
-target_y += lengthdir_y(64, bullet_direction);
+target_x += lengthdir_x(128, bullet_direction);
+target_y += lengthdir_y(128, bullet_direction);
 
 
 alarm[0] = timing;
@@ -94,8 +94,8 @@ alarm[0] = timing;
           <argument>
             <kind>1</kind>
             <string>
-x = ease(x, target_x, 0.1);
-y = ease(y, target_y, 0.1);
+x = ease(x, target_x, 0.05);
+y = ease(y, target_y, 0.05);
 
 
 </string>
@@ -162,6 +162,35 @@ with (other)
 instance_destroy();
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="objBullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if (owner_index != other.owner_index) {
+    with (other)
+        instance_destroy();
+        
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -241,9 +270,9 @@ if (other.ancestor != owner) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (owner == objP.id)
+            <string>if (owner_index == objP)
     draw_sprite(spr_bulletB, image_index, x,y);
-else if (owner.object_index = objE_base)
+else if (owner_index = objE_base)
     draw_sprite(spr_bullet, image_index, x, y);
 else
     draw_sprite(sprPuff, image_index, x, y);
